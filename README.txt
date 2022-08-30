@@ -1,3 +1,5 @@
+MTP Backup Graph Agent
+
 To add new customers:
 
 1. Navigate to the 'customers' dictionary and add another dictionary using
@@ -14,5 +16,3 @@ this format
 	located in this file's directory
     (Use remove.bg and trimmy.io for best results regarding size and
 	transparency)
-
-2. 
