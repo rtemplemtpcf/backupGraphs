@@ -1,0 +1,706 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+/* General document styling 
+================================================ */
+* {margin: 0; padding: 0;}
+
+*:focus {outline: none;}
+
+body {min-width: 1250px;}
+
+label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Remove radio button, keep label */
+input[type="radio" i] {position: absolute; height: 0em;}
+
+@media screen and (max-width: 1280px) {
+    .bucket-stats-container {font-size: 16px;}
+    .bucket-stats-unit {font-size: 12px;}
+}
+
+.right {margin-left: auto;}
+
+/* Scroll Bar */
+::-webkit-scrollbar {width: 8px;}
+    /* Dropdown scroll track */
+    .Select-menu-outer ::-webkit-scrollbar-track {
+        margin: 10px;
+        background: inherit; 
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {background: inherit;}
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px; 
+        background: rgb(197, 197, 197);
+    }
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {background: rgb(160, 160, 160);}
+
+/* Default dash loading screen */
+._dash-loading {
+    width: 0;
+    height: 0;
+    margin: auto;
+    text-align: center;
+    color: transparent;
+}
+    
+._dash-loading::after {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    color: black;
+    vertical-align: text-bottom;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: spinner-border 0.75s linear infinite;
+    animation: spinner-border 0.75s linear infinite;
+    margin-top: 2rem;
+}
+
+/* Encapsulating grid for whole layout 
+================================================ */
+.grid-container {
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    height: 100vh;
+}
+
+/* Navbar 
+================================================ */
+.navbar {
+    grid-column: 1;
+    height: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0);
+    background-color: #f3f9ff;
+}
+
+/* MTP Logo */
+.mtp-logo-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: auto;
+}
+    .mtp-logo {width: 70%; height: 70%;}
+
+/* Theme selector */
+#theme-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 10px 25px 0 25px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 8px;
+    background-color: white;
+}
+    #theme-buttons > label {width: calc(100% / 3);}
+
+/* Individual theme button */
+.theme-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    color: #909090;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 170ms ease;
+}
+    input:hover, input:checked {cursor: pointer;}
+
+    /* Default theme button */
+    input:hover + .default, 
+    input:checked + .default {
+        border: 1px solid #f3f9ff;
+        background-color: #f3f9ff;
+        color: #0C2752;
+    }
+
+    /* Light theme button */
+    input:hover + .light, 
+    input:checked + .light {
+        border: 1px solid grey;
+        background-color: white;
+        color: black;
+    }
+
+    /* Dark theme button */
+    input:hover + .dark, 
+    input:checked + .dark {
+        border: 1px solid #3d4143;
+        background-color: #292a2d;
+        color: white;
+    }
+
+.customer-dropdown-title {
+    margin-left: 30px;  
+    margin-top: 30px;
+    color: rgb(112, 112, 112);
+    font-size: 12px; 
+    font-weight: 800;
+}
+/* Dropdown for customers */
+.customer-dropdown {
+    margin: 0 20px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+}
+    .customer-dropdown > .Select-menu-outer {margin-top: 2px;}
+    .customer-dropdown > .Select-control {
+        cursor: pointer;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+    }
+    .customer-dropdown > .is-open > .Select-control {background-color: rgba(0, 0, 0, 0);}
+    
+/* Bucket buttons */
+.bucket-buttons-container {overflow-y: auto; height: 70%;}
+    .bucket-btn {
+        display: inline-block;
+        text-align: left;
+        overflow-wrap: break-word;
+        margin: 1% 10%;
+        padding: 12px;
+        width: 80%;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        border-radius: 8px;
+        background-color: inherit;
+        color: #707070;
+        font-family: 'Manrope', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        transition: 100ms;
+    }
+        .bucket-btn:hover {color: #0C2752;}
+        input:checked + .bucket-btn {
+            cursor: default;
+            background-color: #0C2752;
+            color: white
+        }
+
+/* ================================================
+    Start content 
+================================================ */
+.content {
+    grid-column: 2 / span 5;
+    padding: 0 3%;
+    background-color: white;
+}
+
+/* Header 
+================================================ */
+.color-default {background-color: #f3f9ff;}
+
+/* Space for header items ('Dashboard' and logout button) */
+.header {
+    display: flex;
+    align-items: center;
+    margin: 30px 1% 15px 2%;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    font-family: 'Outfit', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+/* Logout button */
+#logout {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: inherit;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+}
+    #logout > img {
+        width: 17px;
+        height: 17px;
+        margin-right: 12px;
+        filter: invert(0%) sepia(55%) saturate(1983%) hue-rotate(8deg) brightness(102%) contrast(109%);
+    }
+        #logout:hover > img, 
+        #logout:hover > span {
+            filter: brightness(0) saturate(100%) invert(31%) sepia(69%) saturate(1951%) hue-rotate(336deg) brightness(80%) contrast(110%);
+        }
+
+/* Start statistics (graph and info box) 
+================================================ */
+.stats {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(410px, 1fr);
+    gap: 3%;
+}
+
+/* Data type tab group */
+#datatype-tabs {
+    border-bottom: 1px solid transparent !important;
+    margin: 0 1% 10px 3%;
+}
+    .datatype-tab--selected {
+        border-bottom: 2px solid #095cad !important;
+        font-weight: 700;
+    }
+    .tab--selected.jsx-3468109796 {color: #095cad !important;}
+    .datatype-tab {
+        border-left: 0px !important;
+        border-right: 0px !important;
+        border-top: 0px !important;
+        background-color: rgba(0, 0, 0, 0) !important;
+        color: grey;
+        font-family: 'Manrope', sans-serif;
+    }
+        .tab.jsx-3468109796 {border-bottom: 1px solid #d6d6d6;}
+        .tab.jsx-3468109796:hover {color: #095cad; border: 1px solid #095cad;}
+        .tab.jsx-3468109796:last-of-type {border-bottom: 1px solid #d6d6d6;}
+        .tab.jsx-3468109796:last-of-type:hover {color: #095cad; border: 1px solid #095cad;}
+
+/* Buttons for graph selection 
+================================================ */
+.graph-container {grid-column: 1 / span 2;}
+
+/* Buttons and dropdown container for graph */
+.graph-selection {
+    display: grid;
+    grid-template-columns: minmax(60px, auto) 1fr minmax(50px, auto);
+    margin: 10px 1% 10px 3%;
+    width: 96%;
+    height: 60px;
+}
+
+/* Buttons for graph selection */
+.graph-buttons {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: 34px;
+    padding: 5px;
+    background-color: #f3f9ff;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+    .date-range-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 28px;
+        width: 80px;
+        margin: 4px 5px;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        background-color: #f3f9ff;
+        color: #909090;
+        font-weight: 600;
+        font-size: 13px;
+        transition: 170ms ease;
+    }
+        .date-range-button:hover {color: #0C2752}
+        input + .date-range-button {text-align: center;}
+        input:checked + .date-range-button {
+            background-color: #0C2752;
+            cursor: default;
+            color: white
+        }
+    
+    /* Buttons for line or bar graph */
+    .graphtype {
+        display: inline;
+        float: right;
+        padding-top: 2px;
+    }
+        .graphtype > img:hover {filter: brightness(120%);}
+        #graph_type {grid-column: 2;}
+            .graph-type-btn {
+                width: 30px;
+                height: 30px;
+                margin: 0 10px;
+                cursor: pointer;
+                filter: brightness(0) saturate(100%) invert(41%) sepia(1%) saturate(253%) hue-rotate(315deg) brightness(105%) contrast(94%);
+            }
+            input:checked + .graph-type-btn {
+                cursor: default;
+                filter: brightness(0) saturate(100%) invert(14%) sepia(12%) saturate(7331%) hue-rotate(194deg) brightness(93%) contrast(100%);
+            }
+            input:hover:not(:checked) + .graph-type-btn {filter: brightness(80%);}
+
+/* Time dropdown */
+.timedropdown {
+    min-width: 50px;
+    max-width: 210px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+}
+    .timedropdown > .Select-control {
+        height: 46px;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 0, 0, 0);
+        cursor: pointer;
+        background-color: #f3f9ff;
+    }
+    #timedropdown > .is-focused:not(.is-open)>.Select-control {
+        border: 1px solid rgba(0, 0, 0, 0);    
+        box-shadow: none;
+        outline: none;
+    }
+
+#graph {
+    height: 600px;
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Begin bucket information 
+================================================ */
+.bucket-info {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin: 10px;
+    padding: 4%;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    cursor: default;
+    background-color: #f3f9ff;
+}
+
+#customer-logo {
+    width: 150px;
+    height: 90px;
+    margin-bottom: 10px;
+}
+
+#customer-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+/* Bucket display underneath customer name */
+.bucket-line {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 5px 0 20px 0;
+    padding: 5px 8px 5px 7px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    background-color: #DDDDDD;
+    color: #555555;
+}
+    .bucket-line > img {
+        width: 20px;
+        height: 20px;
+        padding-right: 5px;
+        filter: none; /* Gets changed through theme buttons */
+    }
+    #customer-bucket {
+        font-family: 'Outfit', sans-serif;
+        font-size: 17px;
+        font-weight: 300;
+    }
+
+/* Container for displaying gigabytes */
+.gigabytes-container {
+    margin: auto 0 5px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+}
+    #gigabytes {
+        font-family: 'Inter', sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+    }
+
+/* Grid for all 4 additional statistics */
+.bucket-stats-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 10px;
+    height: 225px;
+}
+    .bucket-stats-container {
+        padding: 5%;
+        border: 1px solid rgba(0, 0, 0, 0);
+        border-radius: 5%;
+        background-color: #fff;
+    }
+    .bucket-stats-container:hover .bucket-stats-label {
+        color: #60C31B;
+        transition: 150ms ease;
+    }
+    .bucket-stats-container img {filter: none;}
+
+/* Label for determining which statistic is displayed in each grid */
+.bucket-stats-label {
+    color: #c2c2c2;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Value display for statistics */
+.bucket-stats-element {
+    display: flex;
+    align-items: center;
+    height: 50%;
+    font-family: 'Manrope', sans-serif;
+}
+    .bucket-stats-value {
+        padding-bottom: 2px;
+        font-family: 'Inter', sans-serif;
+        font-size: 1.2vw;
+        font-weight: 800;
+    }
+    .bucket-stats-unit {
+        display: flex;
+        align-items: flex-end;
+        font-size: .9vw;
+    }
+        .prefix {margin-left: 2px;}
+        .suffix {margin-right: 3px;}
+
+/* Dropdown menu styling
+================================================ */
+.Select-menu-outer {
+    margin-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 12px;
+    font-weight: 500;
+}
+    .Select-value {display: flex; align-items: center;}
+    .Select-arrow {margin-right: 5px;}
+    .Select-value-label {margin-right: 20px; font-weight: 600;}
+    .ReactVirtualized__Grid {padding: 5px; height: fit-content;}
+    .VirtualizedSelectOption {
+        height: 25px;
+        cursor: pointer;
+        color: #707070;
+    }
+    .VirtualizedSelectOption:hover {color: black;}
+    .VirtualizedSelectFocusedOption {
+        border-radius: 8px;
+        background-color: rgba(0, 0, 0, 0);
+        color: black;
+    }
+    .VirtualizedSelectSelectedOption {
+        border-radius: 8px;
+        background-color: #EEEEEE;
+        color: black;
+    }
+    .is-focused:not(.is-open)>.Select-control {
+        border: none;
+        box-shadow: none;
+        outline: none;
+    }
+    /* Dropdown text color */
+    .has-value.Select--single>.Select-control .Select-value .Select-value-label, .has-value.is-pseudo-focused.Select--single>.Select-control .Select-value .Select-value-label {
+        color: #0C2752;
+    }
+
+/* Login page styling
+================================================ */
+#loginpage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Manrope', sans-serif;
+}
+
+.login-content {
+    width: 350px;
+    height: fit-content;
+    margin-bottom: 50px;
+    padding: 40px;
+    border: 1px solid rgb(163, 163, 163);
+    border-radius: 20px;
+}
+    .login-logo {
+        display: block;
+        width: 190px;
+        height: 65px;
+        margin: 0 auto 20px;
+    }
+
+    .login-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        color: #0C2752; 
+        font-size: 24px;
+        font-weight: 900;
+    }
+
+.loginitem {
+    width: 350px;
+    height: 65px;
+    margin-top: 18px;
+    font-size: 14px;
+}
+    .login-indicator {
+        display: flex;
+        position: relative; 
+        bottom: 62px;
+        left: 10px;
+        width: fit-content;
+        padding: 0 5px;
+        background: white;
+        color: #acacac;
+        font-family: 'Roboto';
+    }
+    .login-field {
+        width: 316px;
+        height: 20px;
+        margin-top: 5px;
+        padding: 16px;
+        border: 1px solid #acacac;
+        border-radius: 6px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        transition: 50ms ease;
+    }
+        .login-field:hover {cursor: text;}
+        .login-field:focus {border: 1px solid #0C2752; transition: 100ms ease;}
+        .login-field:focus + Div {color: #0C2752;}
+
+.spacer{
+    height: 1px;
+    margin: 10px 0;
+    background-color: grey;
+}
+
+.loginbutton {
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+    border-radius: 25px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    background-color: #60C31B;
+    color: #0C2752; 
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    transition: 150ms ease;
+}
+    .loginbutton:hover {
+        cursor: pointer;
+        filter: brightness(120%);
+        transition: 150ms ease;
+    }
+    .loginbutton-disabled {
+        width: 100%;
+        height: 50px;
+        margin-top: 15px;
+        border-radius: 25px;
+        border: 1px solid rgba(0, 0, 0, 0);
+        background-color: lightgrey;
+        color: #0C2752; 
+        font-family: 'Outfit', sans-serif;
+        font-weight: 900;
+        font-size: 16px;
+        transition: 150ms ease;
+    }
+
+.login-message {
+    height: 20px;
+    margin-top: 2px;
+    color: rgb(182, 30, 30);
+    font-weight: 700;
+}
+
+.pw-requirement {
+    font-size: 13px;
+    color: grey;
+}
+
+#resetpassword {
+    display: flex;
+    margin-left: auto;
+    cursor: pointer;
+    background-color: inherit;
+    border: none;
+    color: #095cad;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+    #resetpassword:hover {filter: brightness(55%); text-decoration: underline;}
+
+#back-button {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    margin-top: 2px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 20px;
+    transition: 150ms;
+}
+    #back-button:hover {filter: brightness(300%);}
+
+.back-button-img {
+    width: 30px;
+    height: 30px;
+    filter: invert(10%) sepia(69%) saturate(2348%) hue-rotate(206deg) brightness(60%) contrast(95%);
+}
+
+/* Spinner for login screen */
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 40px;
+    filter: brightness(0) saturate(100%) invert(15%) sepia(91%) saturate(748%) hue-rotate(186deg) brightness(86%) contrast(104%);
+}
+    .lds-ellipsis div {
+        position: absolute;
+        top: 16px;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: #fff;
+        animation-timing-function: cubic-bezier(0, 0, 0, 0);
+    }
+        .lds-ellipsis div:nth-child(1) {left: 8px; animation: lds-ellipsis1 0.6s infinite;}
+        .lds-ellipsis div:nth-child(2) {left: 8px; animation: lds-ellipsis2 0.6s infinite;}
+        .lds-ellipsis div:nth-child(3) {left: 32px; animation: lds-ellipsis2 0.6s infinite;}
+        .lds-ellipsis div:nth-child(4) {left: 56px; animation: lds-ellipsis3 0.6s infinite;}
+        @keyframes lds-ellipsis1 {
+            0% {transform: scale(0);}
+            100% {transform: scale(1);}
+        }
+        @keyframes lds-ellipsis3 {
+            0% {transform: scale(1);}
+            100% {transform: scale(0);}
+        }
+        @keyframes lds-ellipsis2 {
+            0% {transform: translate(0, 0);}
+            100% {transform: translate(24px, 0);}
+        }
